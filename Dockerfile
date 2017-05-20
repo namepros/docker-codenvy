@@ -34,7 +34,6 @@ RUN true \
         subversion \
     && DEBIAN_FRONTEND=noninteractive apt-get -y clean \
     && DEBIAN_FRONTEND=noninteractive apt-get -y autoremove \
-    && rm -rf /var/lib/apt/lists/* \
     && mkdir /run/sshd \
     && sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd \
     && echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
