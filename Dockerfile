@@ -12,9 +12,9 @@
 FROM ubuntu:17.04
 
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-ENV PATH=$JAVA_HOME/bin:$PATH
 RUN true \
     && DEBIAN_FRONTEND=noninteractive apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install apt-utils \
     && DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade \
     && DEBIAN_FRONTEND=noninteractive apt-get -y install \
         openssh-server \
@@ -56,4 +56,4 @@ RUN true \
 EXPOSE 22 4403
 WORKDIR /projects
 ENTRYPOINT ["/home/user/entrypoint.sh"]
-CMD tail -f /dev/null
+CMD echo Running && tail -f /dev/null
