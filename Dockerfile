@@ -15,6 +15,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 ENV PATH=$JAVA_HOME/bin:$PATH
 RUN true \
     && DEBIAN_FRONTEND=noninteractive apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade \
     && DEBIAN_FRONTEND=noninteractive apt-get -y install \
         openssh-server \
         sudo \
@@ -41,8 +42,8 @@ RUN true \
     && usermod -p "*" user \
     && echo '#!/bin/bash\nset -e\nsudo -H /usr/sbin/sshd -D &\nexec "$@"' > /home/user/entrypoint.sh \
     && chmod +x /home/user/entrypoint.sh \
-    && mkdir /projects
-    && chown user:user /projects
+    && mkdir /projects \
+    && chown user:user /projects \
     && LANG=en_US.UTF-8 locale-gen en_US.UTF-8 \
     && true
 ENV LANG en_US.UTF-8
