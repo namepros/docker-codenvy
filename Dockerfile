@@ -9,7 +9,7 @@
 # Updated by NamePros
 # Original: https://github.com/eclipse/che-dockerfiles/blob/master/recipes/stack-base/ubuntu/Dockerfile
 
-FROM ubuntu:17.04
+FROM ubuntu:17.10
 
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 RUN true \
